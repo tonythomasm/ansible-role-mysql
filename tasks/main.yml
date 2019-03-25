@@ -1,0 +1,26 @@
+---
+# tasks file for mysql_db
+    - name: download mysql repo
+      uri:
+        url: http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+
+    - name: install repo
+      yum:
+        name: mysql-community-release-el7-5.noarch.rpm
+    - name: install mysql server
+      yum:
+        name: mysql-server
+
+    - name: start my sql service
+      service:
+        name: mysql
+        state: started
+    # - name: create application database
+    #   mysql_db: name="my_db" state=present
+    # - name: create db user
+    #   mysql_user:
+    #     name: tony
+    #     password: password
+    #     priv: '*.*:ALL'
+    #     state: present
+    #     host: '%'
